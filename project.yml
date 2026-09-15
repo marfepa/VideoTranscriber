@@ -43,3 +43,28 @@ targets:
         ENABLE_HARDENED_RUNTIME: NO
         SWIFT_STRICT_CONCURRENCY: complete
         ENABLE_PREVIEWS: YES
+    scheme:
+      testTargets:
+        - TranscribirVideosTests
+      gatherCoverageData: false
+
+  TranscribirVideosTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "26.0"
+    sources:
+      - path: TranscribirVideosTests
+        excludes:
+          - Fixtures/**
+    resources:
+      - path: TranscribirVideosTests/Fixtures
+    dependencies:
+      - target: TranscribirVideos
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.marfepa.TranscribirVideosTests
+        GENERATE_INFOPLIST_FILE: YES
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGNING_ALLOWED: YES
+        SWIFT_STRICT_CONCURRENCY: complete
